@@ -181,8 +181,8 @@ GameObject:
   - component: {fileID: 6441231209776659890}
   - component: {fileID: 3037471588464442321}
   - component: {fileID: 706140787}
-  - component: {fileID: 7369485511309560277}
-  - component: {fileID: -2522419473865877377}
+  - component: {fileID: 7861396684012498450}
+  - component: {fileID: 437519380209261559}
   m_Layer: 0
   m_Name: VegetationSmall01
   m_TagString: Untagged
@@ -304,7 +304,7 @@ MonoBehaviour:
   _maxHealth: 100
   _icon: {fileID: 21300000, guid: 83b40eddb8960214bb5f642eaa526df2, type: 3}
   _selected: {fileID: 3928039564994946172}
---- !u!114 &7369485511309560277
+--- !u!114 &7861396684012498450
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -313,10 +313,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6441231208406260267}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6321609c854147e4384ea37dee72e7bf, type: 3}
+  m_Script: {fileID: 11500000, guid: 54ba0ee5ac4e11946861e52dc658c5dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-2522419473865877377
+--- !u!114 &437519380209261559
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -325,7 +325,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6441231208406260267}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4a15685e63646f4a8ea0a6e876b7fa1, type: 3}
+  m_Script: {fileID: 11500000, guid: 54d9f685b68514343a48c28fa6907412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6441231208406260269
