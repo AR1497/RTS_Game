@@ -12,6 +12,9 @@ public class Unit : MonoBehaviour, ISelectable
 
     private float _health = 70;
 
+    public Transform Target => gameObject.transform;
+    public Vector3 CurrenntPosition => gameObject.transform.position;
+
     public float Health => _health;
     public float MaxHealth => _maxHealth;
     public Sprite Icon => _icon;

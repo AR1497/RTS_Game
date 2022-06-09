@@ -12,6 +12,8 @@ public class Tree : MonoBehaviour, ISelectable
 
     private float _health = 100;
 
+    public Vector3 CurrenntPosition => gameObject.transform.position;
+
     public float Health => _health;
     public float MaxHealth => _maxHealth;
     public Sprite Icon => _icon;

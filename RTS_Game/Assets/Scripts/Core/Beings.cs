@@ -17,6 +17,8 @@ public class Beings : MonoBehaviour, ISelectable
     public float MaxHealth => _maxHealth;
     public Sprite Icon => _icon;
 
+    public Vector3 CurrenntPosition => gameObject.transform.position;
+
     public void UnsetSelected()
     {
         _selected.SetActive(false);
