@@ -11,6 +11,8 @@ public sealed class MouseInteractionPresenter : MonoBehaviour
     [SerializeField] private EventSystem _eventSystem;
 
     [SerializeField] private Vector3Value _groundClicksRMB;
+    [SerializeField] private AttackValue _attackRMB;
+    [SerializeField] private PatrolValue _patrolRMB;
     [SerializeField] private Transform _groundTransform;
 
     private Plane _groundPlane;
@@ -28,24 +30,44 @@ public sealed class MouseInteractionPresenter : MonoBehaviour
             return;
         }
         var ray = _camera.ScreenPointToRay(Input.mousePosition);
+        var hits = Physics.RaycastAll(ray);
         if (Input.GetMouseButtonUp(0))
         {
-            var hits = Physics.RaycastAll(ray);
             if (hits.Length == 0)
             {
                 return;
             }
-            var selectable = hits
-                .Select(hit => hit.collider.GetComponentInParent<ISelectable>())
-                .FirstOrDefault(c => c != null);
-            _selectedObject.SetValue(selectable);
+            GetLMBSelectedObject(hits);
         }
         else
         {
-            if (_groundPlane.Raycast(ray, out var enter))
-            {
-                _groundClicksRMB.SetValue(ray.origin + ray.direction * enter);
-            }
+            GetGroundClickPosition(ray);
+
+            GetAttacableClickUnit(hits);
+        }
+    }
+
+    private void GetLMBSelectedObject(RaycastHit[] hits)
+    {
+        var selectable = hits
+        .Select(hit =>
+        hit.collider.GetComponentInParent<ISelectable>())
+        .Where(c => c != null)
+        .FirstOrDefault();
+        _selectedObject.SetValue(selectable);
+    }
+    private void GetAttacableClickUnit(RaycastHit[] hits)
+    {
+        foreach (var item in hits.Where(item => item.collider.GetComponentInParent<IAttackable>() != null))
+        {
+            _attackRMB.SetValue((Abstractions.Commands.CommandsInterfaces.IAttackCommand)item.collider.GetComponentInParent<IAttackable>());
+        }
+    }
+    private void GetGroundClickPosition(Ray ray)
+    {
+        if (_groundPlane.Raycast(ray, out var enter))
+        {
+            _groundClicksRMB.SetValue(ray.origin + ray.direction * enter);
         }
     }
 }
