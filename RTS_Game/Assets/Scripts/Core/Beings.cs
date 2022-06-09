@@ -4,7 +4,8 @@ using Abstractions;
 public class Beings : MonoBehaviour, ISelectable
 {
     [SerializeField]
-    private float _maxHealth = 50;
+    private float _maxHealth = 50; 
+
     [SerializeField]
     private Sprite _icon;
     [SerializeField]
