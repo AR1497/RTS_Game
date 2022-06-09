@@ -8,6 +8,8 @@ namespace Abstractions
         float MaxHealth { get; }
         Sprite Icon { get; }
 
+        public Vector3 CurrenntPosition { get; }
+
         void SetSelected();
         void UnsetSelected();
     }
