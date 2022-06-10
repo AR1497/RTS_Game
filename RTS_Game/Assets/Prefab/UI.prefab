@@ -2265,5 +2265,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _assetContext: {fileID: 11400000, guid: db5628a97bb14b3458da975779b7605e, type: 2}
   _vector3Value: {fileID: 11400000, guid: 62aa7ac5dd6568949a68577500a0ec27, type: 2}
-  _attackable: {fileID: 0}
+  _attackable: {fileID: 11400000, guid: 7ea19f765d284b7499071a10830c40c7, type: 2}
   _selectable: {fileID: 11400000, guid: 424d41dfc27358f41bc949c1c8515dc9, type: 2}
