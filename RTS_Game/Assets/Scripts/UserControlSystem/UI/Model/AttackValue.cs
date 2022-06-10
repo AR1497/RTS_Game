@@ -4,7 +4,7 @@ using UnityEngine;
 namespace UserControlSystem
 {
     [CreateAssetMenu(fileName = nameof(AttackValue), menuName = "Strategy Game/" + nameof(AttackValue), order = 0)]
-    public sealed class AttackValue : ScriptableObjectValueBase<IAttackCommand>
+    public class AttackValue : ScriptableObjectValueBase<IAttackCommand>
     {
 
     }
