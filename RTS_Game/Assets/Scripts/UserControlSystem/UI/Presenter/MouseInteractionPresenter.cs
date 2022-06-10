@@ -60,7 +60,7 @@ public sealed class MouseInteractionPresenter : MonoBehaviour
     {
         foreach (var item in hits.Where(item => item.collider.GetComponentInParent<IAttackable>() != null))
         {
-            _attackRMB.SetValue((Abstractions.Commands.CommandsInterfaces.IAttackCommand)item.collider.GetComponentInParent<IAttackable>());
+            _attackRMB.SetValue(item.collider.GetComponentInParent<IAttackable>());
         }
     }
     private void GetGroundClickPosition(Ray ray)
