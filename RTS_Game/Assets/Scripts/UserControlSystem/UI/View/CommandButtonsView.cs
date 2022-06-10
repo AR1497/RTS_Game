@@ -57,9 +57,7 @@ namespace UserControlSystem.UI.View
         {
             foreach (var currentExecutor in commandExecutors)
             {
-                var buttonGameObject = _buttonsByExecutorType
-                    .Where(t => t.Key.IsAssignableFrom(currentExecutor.GetType()))
-                    .First().Value;
+                var buttonGameObject = GETButtonGameObjectByType(currentExecutor.GetType());
                 buttonGameObject.SetActive(true);
                 var button = buttonGameObject.GetComponent<Button>();
                 button.onClick.AddListener(() => OnClick?.Invoke(currentExecutor));
@@ -69,8 +67,10 @@ namespace UserControlSystem.UI.View
         private GameObject GETButtonGameObjectByType(Type executorInstanceType)
         {
             return _buttonsByExecutorType
-                .First(type => type.Key.IsAssignableFrom(executorInstanceType))
-                .Value;
+            .Where(type =>
+            type.Key.IsAssignableFrom(executorInstanceType))
+            .First()
+            .Value;
         }
 
         public void Clear()

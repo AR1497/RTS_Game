@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Abstractions;
 using Abstractions.Commands;
-using Abstractions.Commands.CommandsInterfaces;
 using UnityEngine;
-using UserControlSystem.CommandsRealization;
 using UserControlSystem.UI.View;
-using Utils;
 using Zenject;
 
 namespace UserControlSystem.UI.Presenter
@@ -15,16 +11,16 @@ namespace UserControlSystem.UI.Presenter
     {
         [SerializeField] private SelectableValue _selectable;
         [SerializeField] private CommandButtonsView _view;
-        [Inject] private CommandButtonsModel _model;
-
         private ISelectable _currentSelectable;
+
+        [Inject] private CommandButtonsModel _buttonModel;
 
         private void Start()
         {
-            _view.OnClick += _model.OnCommandButtonClicked;
-            _model.OnCommandSent += _view.UnblockAllInteractions;
-            _model.OnCommandCancel += _view.UnblockAllInteractions;
-            _model.OnCommandAccepted += _view.BlockInteractions;
+            _view.OnClick += _buttonModel.OnCommandButtonClicked;
+            _buttonModel.OnCommandSent += _view.UnblockAllInteractions;
+            _buttonModel.OnCommandCancel += _view.UnblockAllInteractions;
+            _buttonModel.OnCommandAccepted += _view.BlockInteractions;
 
             _selectable.OnNewValue += ONSelected;
             ONSelected(_selectable.CurrentValue);
@@ -38,7 +34,7 @@ namespace UserControlSystem.UI.Presenter
             }
             if (_currentSelectable != null)
             {
-                _model.OnSelectionChanged();
+                _buttonModel.OnSelectionChanged();
             }
             _currentSelectable = selectable;
 
