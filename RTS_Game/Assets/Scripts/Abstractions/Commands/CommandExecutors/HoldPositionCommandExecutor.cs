@@ -6,6 +6,6 @@ public class HoldPositionCommandExecutor : CommandExecutorBase<IHoldPositionComm
 {
     public override void ExecuteSpecificCommand(IHoldPositionCommand command)
     {
-        Debug.Log($"{name} has stopped!");
+        Debug.Log($"Stoping {gameObject.name}");
     }
 }
