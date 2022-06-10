@@ -1,13 +1,36 @@
 using System;
 using Abstractions.Commands.CommandsInterfaces;
+using UserControlSystem.CommandsRealization;
+using Utils;
+using Zenject;
 
 namespace UserControlSystem
 {
-    public sealed class AttackCommandCreator : CommandCreatorBase<IAttackCommand>
+    public class AttackCommandCreator : CommandCreatorBase<IAttackCommand>
     {
+        [Inject] private AssetsContext _context;
+        private Action<IAttackCommand> _creationCallback;
+
+        [Inject]
+        private void Init(ScriptableObjectValueBase<IAttackable> groundClicks)
+        {
+            groundClicks.OnNewValue += onNewValue;
+        }
+
+
+        private void onNewValue(IAttackable target)
+        {
+            _creationCallback?.Invoke(_context.Inject(new AttackUnitCommand(target)));
+            _creationCallback = null;
+        }
         protected override void ClassSpecificCommandCreation(Action<IAttackCommand> creationCallback)
         {
-
+            _creationCallback = creationCallback;
+        }
+        public override void ProcessCancel()
+        {
+            base.ProcessCancel();
+            _creationCallback = null;
         }
     }
 }
