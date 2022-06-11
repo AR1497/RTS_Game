@@ -1,12 +1,14 @@
 using System.Linq;
 using Abstractions;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UserControlSystem;
 
 public class SelectionObjectPresenter : MonoBehaviour
 {
     [SerializeField] private Camera _camera;
     [SerializeField] private SelectableValue _selectedObject;
+    [SerializeField] private EventSystem _eventSystem;
 
     private ISelectable _activeSelectabeObject;
 
@@ -20,6 +22,11 @@ public class SelectionObjectPresenter : MonoBehaviour
         if (_activeSelectabeObject != null)
         {
             _activeSelectabeObject.UnsetSelected();
+        }
+
+        if (_eventSystem.IsPointerOverGameObject())
+        {
+            return;
         }
 
         var hits = Physics.RaycastAll(_camera.ScreenPointToRay(Input.mousePosition));
