@@ -2819,6 +2819,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _camera: {fileID: 963194227}
   _selectedObject: {fileID: 11400000, guid: 424d41dfc27358f41bc949c1c8515dc9, type: 2}
+  _eventSystem: {fileID: 304458910}
 --- !u!114 &1155337455
 MonoBehaviour:
   m_ObjectHideFlags: 0
