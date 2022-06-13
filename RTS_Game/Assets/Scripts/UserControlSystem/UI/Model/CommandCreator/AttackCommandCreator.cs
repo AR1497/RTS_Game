@@ -6,10 +6,12 @@ using Zenject;
 
 namespace UserControlSystem
 {
-    public class AttackCommandCreator : CommandCreatorBase<IAttackCommand>
+    public class AttackCommandCreator : CancellableCommandCreatorBase<IAttackCommand, IAttackable>
     {
         [Inject] private AssetsContext _context;
         private Action<IAttackCommand> _creationCallback;
+
+        protected override IAttackCommand CreateCommand(IAttackable argument) => new AttackUnitCommand(argument);
 
         [Inject]
         private void Init(ScriptableObjectValueBase<IAttackable> groundClicks)

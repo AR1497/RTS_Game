@@ -8,12 +8,15 @@ using Zenject;
 
 namespace UserControlSystem
 {
-    public class PatrolCommandCreator : CommandCreatorBase<IPatrolCommand>
+    public class PatrolCommandCreator : CancellableCommandCreatorBase<IPatrolCommand, Vector3>
     {
         [Inject] private AssetsContext _context;
         [Inject] private ScriptableObjectValueBase<ISelectable> _selectedObject;
 
         private Action<IPatrolCommand> _creationCallback;
+
+        protected override IPatrolCommand CreateCommand(Vector3 argument)
+            => new PatrolUnitCommand(_selectedObject.CurrentValue.PivotPoint.position, argument);
 
         [Inject]
         private void Init(ScriptableObjectValueBase<Vector3> groundClicks)

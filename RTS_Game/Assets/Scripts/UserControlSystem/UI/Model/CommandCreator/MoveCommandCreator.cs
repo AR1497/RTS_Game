@@ -7,10 +7,12 @@ using Zenject;
 
 namespace UserControlSystem
 {
-    public sealed class MoveCommandCreator : CommandCreatorBase<IMoveCommand>
+    public sealed class MoveCommandCreator : CancellableCommandCreatorBase<IMoveCommand, Vector3>
     {
         [Inject] private AssetsContext _context;
         private Action<IMoveCommand> _creationCallback;
+
+        protected override IMoveCommand CreateCommand(Vector3 argument) => new MoveUnitCommand(argument);
 
         [Inject]
         private void Init(ScriptableObjectValueBase<Vector3> groundClicks) => groundClicks.OnNewValue += ONNewValue;
