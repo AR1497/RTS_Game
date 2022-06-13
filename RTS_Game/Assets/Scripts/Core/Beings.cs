@@ -4,8 +4,9 @@ using Abstractions;
 public class Beings : MonoBehaviour, ISelectable
 {
     [SerializeField]
-    private float _maxHealth = 50; 
-
+    private float _maxHealth = 50;
+    [SerializeField]
+    private Transform _pivotPoint;
     [SerializeField]
     private Sprite _icon;
     [SerializeField]
@@ -15,6 +16,7 @@ public class Beings : MonoBehaviour, ISelectable
 
     public float Health => _health;
     public float MaxHealth => _maxHealth;
+    public Transform PivotPoint => _pivotPoint;
     public Sprite Icon => _icon;
 
     public Vector3 CurrenntPosition => gameObject.transform.position;

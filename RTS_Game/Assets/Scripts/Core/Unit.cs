@@ -5,6 +5,8 @@ public class Unit : MonoBehaviour, ISelectable
 {
     [SerializeField]
     private float _maxHealth = 70;
+    [SerializeField] 
+    private Transform _pivotPoint;
     [SerializeField]
     private Sprite _icon;
     [SerializeField]
@@ -17,6 +19,8 @@ public class Unit : MonoBehaviour, ISelectable
 
     public float Health => _health;
     public float MaxHealth => _maxHealth;
+    public Transform PivotPoint => _pivotPoint;
+
     public Sprite Icon => _icon;
 
     public void UnsetSelected()
