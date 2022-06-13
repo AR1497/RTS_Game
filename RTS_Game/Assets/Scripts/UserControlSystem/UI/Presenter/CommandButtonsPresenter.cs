@@ -46,45 +46,5 @@ namespace UserControlSystem.UI.Presenter
                 _view.MakeLayout(commandExecutors);
             }
         }
-
-        //private void ONButtonClick(ICommandExecutor commandExecutor)
-        //{
-        //    switch (commandExecutor)
-        //    {
-        //        case var command when commandExecutor as CommandExecutorBase<IProduceUnitCommand>:
-        //            if (command != null)
-        //            {
-        //                command.ExecuteCommand(_context.Inject(new ProduceUnitCommandHeir()));
-        //            }
-        //            break;
-        //        case var command when commandExecutor as CommandExecutorBase<IAttackCommand>:
-        //            if (command != null)
-        //            {
-        //                command.ExecuteCommand(new AttackUnitCommand());
-        //            }
-        //            break;
-        //        case var command when commandExecutor as CommandExecutorBase<IMoveCommand>:
-        //            if (command != null)
-        //            {
-        //                command.ExecuteCommand(new MoveUnitCommand());
-        //            }
-        //            break;
-        //        case var command when commandExecutor as CommandExecutorBase<IPatrolCommand>:
-        //            if (command != null)
-        //            {
-        //                command.ExecuteCommand(new PatrolUnitCommand());
-        //            }
-        //            break;
-        //        case var command when commandExecutor as CommandExecutorBase<IHoldPositionCommand>:
-        //            if (command != null)
-        //            {
-        //                command.ExecuteCommand(new HoldPositionUnitCommand());
-        //            }
-        //            break;
-        //        default:
-        //            throw new ApplicationException($"{nameof(CommandButtonsPresenter)}.{nameof(ONButtonClick)}:" +
-        //                $"Unknown type of commands executor: {commandExecutor.GetType().FullName}!");
-        //    }                           
-        //}
     }
 }
