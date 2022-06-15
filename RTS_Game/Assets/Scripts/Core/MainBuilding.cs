@@ -2,6 +2,7 @@ using UnityEngine;
 using Abstractions;
 using Abstractions.Commands;
 using Abstractions.Commands.CommandsInterfaces;
+using System.Threading.Tasks;
 
 namespace Core
 {
@@ -24,11 +25,19 @@ namespace Core
 
         public Vector3 CurrenntPosition => gameObject.transform.position;
 
-        public override void ExecuteSpecificCommand(IProduceUnitCommand command)
-        => Instantiate(command.UnitPrefab,
-            new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10)),
-            Quaternion.identity,
-            _unitsParent);
+        public override async void ExecuteSpecificCommand(IProduceUnitCommand command)
+        {
+            await CreateUnitTask(command);
+        }
+
+        private async Task CreateUnitTask(IProduceUnitCommand command)
+        {
+            await Task.Delay(5000);
+            Instantiate(command.UnitPrefab,
+                                   new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10)),
+                                   Quaternion.identity,
+                                   _unitsParent);
+        }
 
         public void UnsetSelected()
         {
