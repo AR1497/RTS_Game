@@ -7,7 +7,7 @@ namespace Core
 {
     public class UnitMovementStop : MonoBehaviour, IAwaitable<AsyncExtensions.Void>
     {
-        public class StopAwaiter : IAwaiter<AsyncExtensions.Void>
+        public class StopAwaiter : AwaiterBase<AsyncExtensions.Void>
         {
             private readonly UnitMovementStop _unitMovementStop;
             private Action _continuation;

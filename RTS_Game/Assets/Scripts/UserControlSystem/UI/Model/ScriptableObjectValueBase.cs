@@ -6,7 +6,7 @@ namespace UserControlSystem
 {
     public class ScriptableObjectValueBase<T> : ScriptableObject, IAwaitable<T>
     {
-        public class NewValueNotifier<TAwaited> : IAwaiter<TAwaited>
+        public class NewValueNotifier<TAwaited> : AwaiterBase<TAwaited>
         {
             private readonly ScriptableObjectValueBase<TAwaited> _scriptableObjectValueBase;
             private TAwaited _result;
