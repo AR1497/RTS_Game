@@ -140,6 +140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stop: {fileID: 8480339142029896990}
   _animator: {fileID: 2009774473777889382}
+  _holdPositionCommandExecutor: {fileID: 1950631197}
 --- !u!114 &1950631196
 MonoBehaviour:
   m_ObjectHideFlags: 0
