@@ -8,9 +8,9 @@ namespace UserControlSystem.CommandsRealization
         private readonly Vector3 _from;
         private readonly Vector3 _to;
 
-        public PatrolUnitCommand(Vector3 from, Vector3 to)
+        public PatrolUnitCommand(Vector3 @from, Vector3 to)
         {
-            _from = from;
+            _from = @from;
             _to = to;
         }
 
