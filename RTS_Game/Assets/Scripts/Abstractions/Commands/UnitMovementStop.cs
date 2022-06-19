@@ -26,7 +26,7 @@ namespace Core
                 _continuation?.Invoke();
             }
 
-            public override void OnCompleted(Action continuation)
+            public void OnCompleted(Action continuation)
             {
                 if (_isCompleted)
                 {
@@ -37,8 +37,8 @@ namespace Core
                     _continuation = continuation;
                 }
             }
-            public override bool IsCompleted => _isCompleted;
-            public override AsyncExtensions.Void GetResult() => new AsyncExtensions.Void();
+            public bool IsCompleted => _isCompleted;
+            public AsyncExtensions.Void GetResult() => new AsyncExtensions.Void();
         }
 
         public event Action OnStop;
