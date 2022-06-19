@@ -1,16 +1,32 @@
 using System;
 using Utils;
 
-public abstract class AwaiterBase<T> : IAwaiter<T>
+public abstract class AwaiterBase<TAwaited> : IAwaiter<TAwaited>
 {
-    public T CurrentValue { get; private set; }
+    private TAwaited _result;
+    private bool _isCompleted;
+    private Action _continuation;
 
-    public virtual bool IsCompleted { get; set; }
+    public TAwaited GetResult() => _result;
+    public bool IsCompleted => _isCompleted;
 
-    public virtual T GetResult() => CurrentValue;
 
-    public virtual void OnCompleted(Action continuation)
+    public void OnCompleted(Action continuation)
     {
+        if (_isCompleted)
+        {
+            continuation?.Invoke();
+        }
+        else
+        {
+            _continuation = continuation;
+        }
+    }
 
+    protected void ONWaitFinish(TAwaited result)
+    {
+        _result = result;
+        _isCompleted = true;
+        _continuation?.Invoke();
     }
 }
