@@ -1,10 +1,10 @@
-using Abstractions.Commands.CommandsInterfaces;
 using UnityEngine;
+using Utils;
 
 namespace UserControlSystem
 {
     [CreateAssetMenu(fileName = nameof(AttackValue), menuName = "Strategy Game/" + nameof(AttackValue), order = 0)]
-    public class AttackValue : ScriptableObjectValueBase<IAttackable>
+    public class AttackValue : StatelessScriptableObjectValueBase<IAttackable>
     {
 
     }
