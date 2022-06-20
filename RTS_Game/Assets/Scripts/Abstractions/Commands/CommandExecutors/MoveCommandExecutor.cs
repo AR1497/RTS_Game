@@ -19,7 +19,7 @@ namespace Abstractions.Commands.CommandExecutors
         public override async void ExecuteSpecificCommand(IMoveCommand command)
         {
             GetComponent<NavMeshAgent>().destination = command.Target;
-            _animator.SetTrigger("Walk");
+            _animator.SetTrigger(Walk);
             _holdPositionCommandExecutor.CancellationTokenSource = new CancellationTokenSource();
             try
             {
@@ -37,7 +37,7 @@ namespace Abstractions.Commands.CommandExecutors
                 GetComponent<NavMeshAgent>().ResetPath();
             }
             _holdPositionCommandExecutor.CancellationTokenSource = null;
-            _animator.SetTrigger("Idle");
+            _animator.SetTrigger(Idle);
         }
     }
 }
