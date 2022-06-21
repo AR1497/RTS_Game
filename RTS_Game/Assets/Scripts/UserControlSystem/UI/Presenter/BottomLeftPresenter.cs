@@ -18,11 +18,7 @@ namespace UserControlSystem
 
         [Inject] private IObservable<ISelectable> _selectedValues;
 
-        private void Start()
-        {
-            if (_selectedValues != null)
-                _selectedValues.Subscribe(ONSelected);
-        }
+        private void Start() => _selectedValues.Subscribe(ONSelected);
 
         private void ONSelected(ISelectable selected)
         {
