@@ -10,11 +10,11 @@ using Zenject;
 public class AssetInstaller : ScriptableObjectInstaller<AssetInstaller>
 {
     [SerializeField] private AssetsContext _assetContext;
-    [SerializeField] private StatelessScriptableObjectValueBase<Vector3> _vector3Value;
-    [SerializeField] private StatelessScriptableObjectValueBase<IAttackable> _atackCommand;
+    [SerializeField] private ScriptableObjectValueBase<Vector3> _vector3Value;
+    [SerializeField] private ScriptableObjectValueBase<IAttackable> _atackCommand;
     [SerializeField] private ScriptableObjectValueBase<IPatrolCommand> _patrolCommand;
-    [SerializeField] private StatefulScriptableObjectValueBase<ISelectable> _selectable;
-    [SerializeField] private IObservable<ISelectable> _selectedValues;
+    [SerializeField] private ScriptableObjectValueBase<ISelectable> _selectable;
+    [SerializeField] private StatefulScriptableObjectValueBase<ISelectable> _selectedValues;
 
     public override void InstallBindings()
     {

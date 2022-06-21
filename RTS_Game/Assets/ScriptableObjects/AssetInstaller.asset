@@ -17,3 +17,4 @@ MonoBehaviour:
   _atackCommand: {fileID: 11400000, guid: 7ea19f765d284b7499071a10830c40c7, type: 2}
   _patrolCommand: {fileID: 11400000, guid: c133db77e270fbf429acbaa4dd826adc, type: 2}
   _selectable: {fileID: 11400000, guid: 424d41dfc27358f41bc949c1c8515dc9, type: 2}
+  _selectedValues: {fileID: 11400000, guid: 424d41dfc27358f41bc949c1c8515dc9, type: 2}
