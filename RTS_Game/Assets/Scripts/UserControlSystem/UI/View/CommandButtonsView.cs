@@ -53,7 +53,7 @@ namespace UserControlSystem.UI.View
             _produceUnitButton.GetComponent<Selectable>().interactable = value;
         }
 
-        public void MakeLayout(List<ICommandExecutor> commandExecutors)
+        public void MakeLayout(IEnumerable<ICommandExecutor> commandExecutors)
         {
             foreach (var currentExecutor in commandExecutors)
             {
