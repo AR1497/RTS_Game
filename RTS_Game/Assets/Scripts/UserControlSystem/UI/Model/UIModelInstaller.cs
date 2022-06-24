@@ -1,6 +1,7 @@
 using Abstractions;
 using Abstractions.Commands.CommandsInterfaces;
 using UnityEngine;
+using UserControlSystem.UI.Model;
 using Utils;
 using Zenject;
 
@@ -32,6 +33,7 @@ namespace UserControlSystem
                 .To<HoldPositionCommandCreator>().AsTransient();
 
             Container.Bind<CommandButtonsModel>().AsTransient();
+            Container.Bind<BottomCenterModel>().AsTransient();
         }
     }
 }
