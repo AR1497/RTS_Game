@@ -6198,7 +6198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b07dbbd5ac68bc9458f7c6c8e8184641, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _chomperSprite: {fileID: 0}
+  _chomperSprite: {fileID: 21300000, guid: 1fd9483bd637a004db3e94f0519f203f, type: 3}
   _assetContext: {fileID: 11400000, guid: db5628a97bb14b3458da975779b7605e, type: 2}
   _vector3Value: {fileID: 11400000, guid: 62aa7ac5dd6568949a68577500a0ec27, type: 2}
   _attackable: {fileID: 11400000, guid: 7ea19f765d284b7499071a10830c40c7, type: 2}
