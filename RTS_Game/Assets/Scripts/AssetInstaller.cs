@@ -15,6 +15,7 @@ public class AssetInstaller : ScriptableObjectInstaller<AssetInstaller>
     [SerializeField] private ScriptableObjectValueBase<IPatrolCommand> _patrolCommand;
     [SerializeField] private ScriptableObjectValueBase<ISelectable> _selectable;
     [SerializeField] private StatefulScriptableObjectValueBase<ISelectable> _selectedValues;
+    [SerializeField] private Sprite _sprite;
 
     public override void InstallBindings()
     {
@@ -22,5 +23,6 @@ public class AssetInstaller : ScriptableObjectInstaller<AssetInstaller>
         Container.Bind<IAwaitable<IAttackable>>().FromInstance(_atackCommand);
         Container.Bind<IAwaitable<Vector3>>().FromInstance(_vector3Value);
         Container.Bind<IObservable<ISelectable>>().FromInstance(_selectedValues);
+        Container.Bind<Sprite>().WithId("Chomper").FromInstance(_sprite);
     }
 }
