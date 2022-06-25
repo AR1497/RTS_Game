@@ -11,7 +11,7 @@ namespace UserControlSystem
     public class PatrolCommandCreator : CancellableCommandCreatorBase<IPatrolCommand, Vector3>
     {
         [Inject] private AssetsContext _context;
-        [Inject] private ScriptableObjectValueBase<ISelectable> _selectedObject;
+        [Inject] private SelectableValue _selectedObject;
 
         private Action<IPatrolCommand> _creationCallback;
 

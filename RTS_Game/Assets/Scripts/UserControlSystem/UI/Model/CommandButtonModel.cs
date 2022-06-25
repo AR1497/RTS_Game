@@ -23,7 +23,7 @@ namespace UserControlSystem
         {
             if (_commandIsPending)
             {
-                processOnCancel();
+                ProcessOnCancel();
             }
             _commandIsPending = true;
             OnCommandAccepted?.Invoke(commandExecutor);
@@ -45,10 +45,10 @@ namespace UserControlSystem
         public void OnSelectionChanged()
         {
             _commandIsPending = false;
-            processOnCancel();
+            ProcessOnCancel();
         }
 
-        private void processOnCancel()
+        private void ProcessOnCancel()
         {
             _unitProducer.ProcessCancel();
             _attacker.ProcessCancel();

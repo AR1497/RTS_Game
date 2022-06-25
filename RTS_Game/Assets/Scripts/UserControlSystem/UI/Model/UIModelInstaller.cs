@@ -9,6 +9,8 @@ namespace UserControlSystem
 {
     public class UIModelInstaller : MonoInstaller
     {
+        [SerializeField] private Sprite _chomperSprite;
+
         [SerializeField] private AssetsContext _assetContext;
         [SerializeField] private ScriptableObjectValueBase<Vector3> _vector3Value;
         [SerializeField] private ScriptableObjectValueBase<IAttackable> _attackable;
@@ -33,7 +35,12 @@ namespace UserControlSystem
                 .To<HoldPositionCommandCreator>().AsTransient();
 
             Container.Bind<CommandButtonsModel>().AsTransient();
-            Container.Bind<BottomCenterModel>().AsTransient();
+
+            Container.Bind<float>().WithId("Chomper").FromInstance(5f);
+            Container.Bind<string>().WithId("Chomper").FromInstance("Chomper");
+            Container.Bind<Sprite>().WithId("Chomper").FromInstance(_chomperSprite);
+
+            Container.Bind<BottomCenterModel>().AsSingle();
         }
     }
 }
