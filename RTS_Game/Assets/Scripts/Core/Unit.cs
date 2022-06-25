@@ -1,35 +1,38 @@
 using Abstractions;
 using UnityEngine;
 
-public class Unit : MonoBehaviour, ISelectable
-{
-    [SerializeField]
-    private float _maxHealth = 70;
-    [SerializeField] 
-    private Transform _pivotPoint;
-    [SerializeField]
-    private Sprite _icon;
-    [SerializeField]
-    private GameObject _selected;
-
-    private float _health = 70;
-
-    public Transform Target => gameObject.transform;
-    public Vector3 CurrenntPosition => gameObject.transform.position;
-
-    public float Health => _health;
-    public float MaxHealth => _maxHealth;
-    public Transform PivotPoint => _pivotPoint;
-
-    public Sprite Icon => _icon;
-
-    public void UnsetSelected()
+namespace Core
+{ 
+    public class Unit : MonoBehaviour, ISelectable, IAttackable
     {
-        _selected.SetActive(false);
-    }
+        [SerializeField]
+        private float _maxHealth = 70;
+        [SerializeField]
+        private Transform _pivotPoint;
+        [SerializeField]
+        private Sprite _icon;
+        [SerializeField]
+        private GameObject _selected;
 
-    public void SetSelected()
-    {
-        _selected.SetActive(true);
+        private float _health = 70;
+
+        public Transform Target => gameObject.transform;
+        public Vector3 CurrenntPosition => gameObject.transform.position;
+
+        public float Health => _health;
+        public float MaxHealth => _maxHealth;
+        public Transform PivotPoint => _pivotPoint;
+
+        public Sprite Icon => _icon;
+
+        public void UnsetSelected()
+        {
+            _selected.SetActive(false);
+        }
+
+        public void SetSelected()
+        {
+            _selected.SetActive(true);
+        }
     }
 }
