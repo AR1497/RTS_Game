@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Abstractions.Commands.CommandsInterfaces;
+using UnityEngine;
 
 namespace Abstractions
 {
@@ -9,6 +10,7 @@ namespace Abstractions
 
         public Vector3 CurrenntPosition { get; }
 
+        //void ExecuteSpecificCommand(IProduceUnitCommand command);
         void SetSelected();
         void UnsetSelected();
     }
