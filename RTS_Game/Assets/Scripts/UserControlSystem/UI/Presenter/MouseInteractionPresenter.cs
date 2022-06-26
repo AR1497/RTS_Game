@@ -69,9 +69,9 @@ public sealed class MouseInteractionPresenter : MonoBehaviour
             return false;
         }
         result = hits
-        .Select(hit => hit.collider.GetComponentInParent<T>())
-        .Where(c => c != null)
-        .FirstOrDefault();
+            .Select(hit => hit.collider.GetComponentInParent<T>())
+            .Where(c => c != null)
+            .FirstOrDefault();
         return result != default;
     }
 

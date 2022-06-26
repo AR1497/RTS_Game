@@ -12,10 +12,9 @@ namespace UserControlSystem.UI.Presenter
     public sealed class CommandButtonsPresenter : MonoBehaviour
     {
         [SerializeField] private CommandButtonsView _view;
-        private ISelectable _currentSelectable;
-
         [Inject] private CommandButtonsModel _buttonModel;
         [Inject] private IObservable<ISelectable> _selectedValues;
+        private ISelectable _currentSelectable;
 
         private void Start()
         {
@@ -44,7 +43,8 @@ namespace UserControlSystem.UI.Presenter
             {
                 var commandExecutors = new List<ICommandExecutor>();
                 commandExecutors.AddRange((selectable as Component).GetComponentsInParent<ICommandExecutor>());
-                _view.MakeLayout(commandExecutors);
+                var queue = (selectable as Component).GetComponentInParent<ICommandsQueue>();
+                _view.MakeLayout(commandExecutors, queue);
             }
         }
     }
