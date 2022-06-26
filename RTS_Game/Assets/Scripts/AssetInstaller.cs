@@ -7,7 +7,7 @@ using Utils;
 using Zenject;
 
 [CreateAssetMenu(fileName = "AssetInstaller", menuName = "Installers/AssetInstaller")]
-public class AssetInstaller : ScriptableObjectInstaller<AssetInstaller>
+public sealed class AssetInstaller : ScriptableObjectInstaller<AssetInstaller>
 {
     [SerializeField] private AssetsContext _assetContext;
     [SerializeField] private ScriptableObjectValueBase<Vector3> _vector3Value;
