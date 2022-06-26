@@ -1,7 +1,7 @@
 using Abstractions;
 using UnityEngine;
 
-public class Tree : MonoBehaviour, ISelectable, IAttackable
+public class Tree : MonoBehaviour, ISelectable
 {
     [SerializeField]
     private float _maxHealth = 100;
