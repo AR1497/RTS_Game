@@ -12,20 +12,19 @@ namespace Core
         public float MaxHealth => _maxHealth;
         public Transform PivotPoint => _pivotPoint;
         public Sprite Icon => _icon;
+        public Vector3 RallyPoint { get; set; }
 
         [SerializeField] private Transform _unitsParent;
-
         [SerializeField] private float _maxHealth = 1000;
         [SerializeField] private Transform _pivotPoint;
         [SerializeField] private Sprite _icon;
-
         [SerializeField] private GameObject _selected;
 
         private float _health = 1000;
 
         public Vector3 CurrenntPosition => gameObject.transform.position;
 
-        public override async void ExecuteSpecificCommand(IProduceUnitCommand command)
+        public override async Task ExecuteSpecificCommand(IProduceUnitCommand command)
         {
             await CreateUnitTask(command);
         }
