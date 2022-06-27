@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace UserControlSystem.CommandsRealization
 {
-    public sealed class SetRallyPointCommand : ISetRallyPointCommand
+    public class SetRallyPointCommand : ISetRallyPointCommand
     {
         public Vector3 RallyPoint { get; }
 
