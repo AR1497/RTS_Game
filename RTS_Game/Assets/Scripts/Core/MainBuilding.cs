@@ -38,6 +38,19 @@ namespace Core
                                    _unitsParent);
         }
 
+        public void RecieveDamage(int amount)
+        {
+            if (_health <= 0)
+            {
+                return;
+            }
+            _health -= amount;
+            if (_health <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+
         public void UnsetSelected()
         {
             _selected.SetActive(false);
