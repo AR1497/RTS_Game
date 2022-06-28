@@ -33,6 +33,8 @@ namespace UserControlSystem
                 .To<PatrolCommandCreator>().AsTransient();
             Container.Bind<CommandCreatorBase<IHoldPositionCommand>>()
                 .To<HoldPositionCommandCreator>().AsTransient();
+            Container.Bind<CommandCreatorBase<ISetRallyPointCommand>>()
+                .To<SetRallyPointCommandCreator>().AsTransient();
 
             Container.Bind<CommandButtonsModel>().AsTransient();
 
