@@ -4,7 +4,7 @@ using Utils;
 namespace UserControlSystem
 {
     [CreateAssetMenu(fileName = nameof(AttackValue), menuName = "Strategy Game/" + nameof(AttackValue), order = 0)]
-    public sealed class AttackValue : StatelessScriptableObjectValueBase<IAttackable>
+    public class AttackValue : StatelessScriptableObjectValueBase<IAttackable>
     {
 
     }
