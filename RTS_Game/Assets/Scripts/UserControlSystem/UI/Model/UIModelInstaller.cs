@@ -9,20 +9,11 @@ namespace UserControlSystem
 {
     public class UIModelInstaller : MonoInstaller
     {
-        [SerializeField] private Sprite _chomperSprite;
-
-        [SerializeField] private AssetsContext _assetContext;
-        [SerializeField] private ScriptableObjectValueBase<Vector3> _vector3Value;
-        [SerializeField] private ScriptableObjectValueBase<IAttackable> _attackable;
-        [SerializeField] private ScriptableObjectValueBase<ISelectable> _selectable;
+        [SerializeField]
+        private Sprite _chomperSprite;
 
         public override void InstallBindings()
         {
-            Container.Bind<AssetsContext>().FromInstance(_assetContext);
-            Container.Bind<ScriptableObjectValueBase<Vector3>>().FromInstance(_vector3Value);
-            Container.Bind<ScriptableObjectValueBase<IAttackable>>().FromInstance(_attackable);
-            Container.Bind<ScriptableObjectValueBase<ISelectable>>().FromInstance(_selectable);
-
             Container.Bind<CommandCreatorBase<IProduceUnitCommand>>()
                 .To<ProduceUnitCommandCreator>().AsTransient();
             Container.Bind<CommandCreatorBase<IAttackCommand>>()
@@ -32,7 +23,7 @@ namespace UserControlSystem
             Container.Bind<CommandCreatorBase<IPatrolCommand>>()
                 .To<PatrolCommandCreator>().AsTransient();
             Container.Bind<CommandCreatorBase<IHoldPositionCommand>>()
-                .To<HoldPositionCommandCreator>().AsTransient();
+                .To<HoldPositionCommandCreator>().AsTransient(); 
             Container.Bind<CommandCreatorBase<ISetRallyPointCommand>>()
                 .To<SetRallyPointCommandCreator>().AsTransient();
 
