@@ -97,7 +97,7 @@ namespace Core.CommandExecutors
                 return;
             }
 
-            lock(this)
+            //lock(this)
             {
                 _ourPosition = transform.position;
                 _ourRotation = transform.rotation;
