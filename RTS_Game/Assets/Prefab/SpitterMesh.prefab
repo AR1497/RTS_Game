@@ -493,8 +493,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54ba0ee5ac4e11946861e52dc658c5dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 0}
-  _stopCommandExecutor: {fileID: 0}
+  _animator: {fileID: 278354313}
+  _holdPositionCommandExecutor: {fileID: 4408235002800346256}
 --- !u!114 &2803086742209218804
 MonoBehaviour:
   m_ObjectHideFlags: 0
