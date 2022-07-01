@@ -70,32 +70,7 @@ public sealed class MouseInteractionPresenter : MonoBehaviour
         }
         result = hits
             .Select(hit => hit.collider.GetComponentInParent<T>())
-            .Where(c => c != null)
-            .FirstOrDefault();
+            .FirstOrDefault(c => c != null);
         return result != default;
-    }
-
-    private void GetLMBSelectedObject(RaycastHit[] hits)
-    {
-        var selectable = hits
-        .Select(hit =>
-        hit.collider.GetComponentInParent<ISelectable>())
-        .Where(c => c != null)
-        .FirstOrDefault();
-        _selectedObject.SetValue(selectable);
-    }
-    private void GetAttacableClickUnit(RaycastHit[] hits)
-    {
-        foreach (var item in hits.Where(item => item.collider.GetComponentInParent<IAttackable>() != null))
-        {
-            _attackRMB.SetValue(item.collider.GetComponentInParent<IAttackable>());
-        }
-    }
-    private void GetGroundClickPosition(Ray ray)
-    {
-        if (_groundPlane.Raycast(ray, out var enter))
-        {
-            _groundClicksRMB.SetValue(ray.origin + ray.direction * enter);
-        }
     }
 }

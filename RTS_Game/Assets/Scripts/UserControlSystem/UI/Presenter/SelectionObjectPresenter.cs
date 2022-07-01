@@ -46,7 +46,6 @@ public class SelectionObjectPresenter : MonoBehaviour
         if (selectable is IUnitProducer)
         {
             var mainBuilding = (IUnitProducer)selectable;
-            mainBuilding.ProduceUnit();
         }
     }
 }

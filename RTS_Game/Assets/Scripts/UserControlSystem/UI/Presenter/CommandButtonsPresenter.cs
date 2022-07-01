@@ -13,7 +13,7 @@ namespace UserControlSystem.UI.Presenter
     {
         [SerializeField] private CommandButtonsView _view;
         [Inject] private CommandButtonsModel _buttonModel;
-        [Inject] private IObservable<ISelectable> _selectedValues;
+        [SerializeField] private SelectableValue _selectedValues;
         private ISelectable _currentSelectable;
 
         private void Start()
@@ -23,7 +23,8 @@ namespace UserControlSystem.UI.Presenter
             _buttonModel.OnCommandCancel += _view.UnblockAllInteractions;
             _buttonModel.OnCommandAccepted += _view.BlockInteractions;
 
-            _selectedValues.Subscribe(ONSelected);
+            _selectedValues.OnNewValue += ONSelected;
+            ONSelected(_selectedValues.CurrentValue);
         }
 
         private void ONSelected(ISelectable selectable)
@@ -32,12 +33,7 @@ namespace UserControlSystem.UI.Presenter
             {
                 return;
             }
-            if (_currentSelectable != null)
-            {
-                _buttonModel.OnSelectionChanged();
-            }
             _currentSelectable = selectable;
-
             _view.Clear();
             if (selectable != null)
             {
