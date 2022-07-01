@@ -2,7 +2,6 @@ using System.Threading.Tasks;
 using Abstractions;
 using Abstractions.Commands;
 using Abstractions.Commands.CommandsInterfaces;
-using Assets.Scripts.Core;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -49,11 +48,13 @@ namespace Core.CommandExecutors
 
         public override async Task ExecuteSpecificCommand(IProduceUnitCommand command)
         {
+            _queue.Add(new UnitProductionTask(command.ProductionTime,
+            command.Icon, command.UnitPrefab, command.UnitName));
             var instance = _diContainer.InstantiatePrefab(command.UnitPrefab, transform.position, Quaternion.identity, _unitsParent);
             var queue = instance.GetComponent<ICommandsQueue>();
             var mainBuilding = GetComponent<MainBuilding>();
-            var factionMember = instance.GetComponent<FactionMember>();
-            factionMember.SetFaction(GetComponent<FactionMember>().FactionId);
+            //var factionMember = instance.GetComponent<FactionMember>();
+            //factionMember.SetFaction(GetComponent<FactionMember>().FactionId);
             queue.EnqueueCommand(new MoveCommand(mainBuilding.RallyPoint));
         }
 

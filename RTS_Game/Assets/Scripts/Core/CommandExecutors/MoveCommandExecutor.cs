@@ -26,11 +26,11 @@ namespace Abstractions.Commands.CommandExecutors
             {
                 await _stop
                 .WithCancellation
-            (
-            _holdPositionCommandExecutor
-            .CancellationTokenSource
-            .Token
-            );
+                (
+                    _holdPositionCommandExecutor
+                    .CancellationTokenSource
+                    .Token
+                );
             }
             catch
             {
