@@ -1,30 +1,32 @@
 using System.Threading;
 using System.Threading.Tasks;
+using Utils;
 
-namespace Utils
+public static class AsyncExtensions
 {
-    public static class AsyncExtensions
+    public struct Void { }
+    public static async Task<TResult> WithCancellation<TResult>(this Task<TResult> originalTask, CancellationToken ct)
     {
-        public struct Void { }
-
-        public static async Task<TResult> WithCancellation<TResult>(this Task<TResult> originalTask, CancellationToken ct)
+        var cancelTask = new TaskCompletionSource<Void>();
+        using (ct.Register(t => ((TaskCompletionSource<Void>)t).TrySetResult(new
+        Void()), cancelTask))
         {
-            var cancelTask = new TaskCompletionSource<Void>();
-            using (ct.Register(t => ((TaskCompletionSource<Void>)t).TrySetResult(new Void()), cancelTask))
+            var any = await Task.WhenAny(originalTask, cancelTask.Task);
+            if (any == cancelTask.Task)
             {
-                var any = await Task.WhenAny(originalTask, cancelTask.Task);
-                if (any == cancelTask.Task)
-                {
-                    ct.ThrowIfCancellationRequested();
-                }
+                ct.ThrowIfCancellationRequested();
             }
-            return await originalTask;
         }
+        return await originalTask;
+    }
 
-        public static Task<TResult> AsTask<TResult>(this IAwaitable<TResult> awaitable)
-            => Task.Run(async () => await awaitable);
+    public static Task<TResult> AsTask<TResult>(this IAwaitable<TResult> awaitable)
+    {
+        return Task.Run(async () => await awaitable);
+    }
 
-        public static async Task<TResult> WithCancellation<TResult>(this IAwaitable<TResult> originalTask, CancellationToken ct) =>
-            await WithCancellation(originalTask.AsTask(), ct);
+    public static async Task<TResult> WithCancellation<TResult>(this IAwaitable<TResult> originalTask, CancellationToken ct)
+    {
+        return await WithCancellation(originalTask.AsTask(), ct);
     }
 }
