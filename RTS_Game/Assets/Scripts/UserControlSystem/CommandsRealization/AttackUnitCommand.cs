@@ -8,7 +8,6 @@ namespace UserControlSystem.CommandsRealization
         {
             Target = target;
         }
-
         public IAttackable Target { get; }
     }
 }
