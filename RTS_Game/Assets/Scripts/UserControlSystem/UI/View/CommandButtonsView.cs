@@ -55,7 +55,7 @@ namespace UserControlSystem.UI.View
             _patrolButton.GetComponent<Selectable>().interactable = value;
             _holdPositionButton.GetComponent<Selectable>().interactable = value;
             _produceUnitButton.GetComponent<Selectable>().interactable = value;
-            _setRallyButton.GetComponent<Selectable>().interactable = value;
+            //_setRallyButton.GetComponent<Selectable>().interactable = value;
         }
 
         public void MakeLayout(IEnumerable<ICommandExecutor> commandExecutors,

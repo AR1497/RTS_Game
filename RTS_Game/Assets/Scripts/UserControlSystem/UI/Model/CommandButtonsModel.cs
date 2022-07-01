@@ -30,13 +30,18 @@ namespace UserControlSystem
             }
             _commandIsPending = true;
             OnCommandAccepted?.Invoke(commandExecutor);
-
-            _unitProducer.ProcessCommandExecutor(commandExecutor, command => ExecuteCommandWrapper(command, commandsQueue));
-            _attacker.ProcessCommandExecutor(commandExecutor, command => ExecuteCommandWrapper(command, commandsQueue));
-            _stopper.ProcessCommandExecutor(commandExecutor, command => ExecuteCommandWrapper(command, commandsQueue));
-            _mover.ProcessCommandExecutor(commandExecutor, command => ExecuteCommandWrapper(command, commandsQueue));
-            _patroller.ProcessCommandExecutor(commandExecutor, command => ExecuteCommandWrapper(command, commandsQueue));
-            _setRally.ProcessCommandExecutor(commandExecutor, command => ExecuteCommandWrapper(command, commandsQueue));
+            _unitProducer.ProcessCommandExecutor(commandExecutor, command =>
+            ExecuteCommandWrapper(command, commandsQueue));
+            _attacker.ProcessCommandExecutor(commandExecutor, command =>
+            ExecuteCommandWrapper(command, commandsQueue));
+            _stopper.ProcessCommandExecutor(commandExecutor, command =>
+            ExecuteCommandWrapper(command, commandsQueue));
+            _mover.ProcessCommandExecutor(commandExecutor, command =>
+            ExecuteCommandWrapper(command, commandsQueue));
+            _patroller.ProcessCommandExecutor(commandExecutor, command =>
+            ExecuteCommandWrapper(command, commandsQueue));
+            _setRally.ProcessCommandExecutor(commandExecutor, command =>
+            ExecuteCommandWrapper(command, commandsQueue));
         }
 
         public void ExecuteCommandWrapper(object command, ICommandsQueue commandsQueue)
