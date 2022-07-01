@@ -1,8 +1,7 @@
-using Abstractions;
+using Abstractions.Commands;
 using UnityEngine;
 
-public interface IAttackable : IHealthHolder
+public interface IAttackable : ICommand
 {
     public Transform Target { get; }
-    void ReceiveDamage(int amount);
 }

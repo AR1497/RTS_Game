@@ -6,6 +6,5 @@ namespace Abstractions
     {
         IReadOnlyReactiveCollection<IUnitProductionTask> Queue { get; }
         public void Cancel(int index);
-        void ProduceUnit();
     }
 }
