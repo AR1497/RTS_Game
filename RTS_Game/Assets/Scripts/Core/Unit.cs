@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Core
 { 
-    public class Unit : MonoBehaviour, ISelectable, IAttackable, IUnit
+    public class Unit : MonoBehaviour, ISelectable
     {
         [SerializeField] private float _maxHealth = 70;
         [SerializeField] private Transform _pivotPoint;
@@ -13,14 +13,12 @@ namespace Core
 
         private float _health = 70;
 
-        public Transform Target => gameObject.transform;
         public Transform PivotPoint => _pivotPoint;
-
         public Sprite Icon => _icon;
-        public Vector3 RallyPoint { get; set; }
-
         public float Health => _health;
         public float MaxHealth => _maxHealth;
+
+        public Vector3 RallyPoint { get; internal set; }
 
         public void UnsetSelected()
         {
