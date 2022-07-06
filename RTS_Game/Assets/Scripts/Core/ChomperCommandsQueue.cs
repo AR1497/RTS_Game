@@ -3,7 +3,7 @@ using UniRx;
 using Zenject;
 using Abstractions.Commands;
 using Abstractions.Commands.CommandsInterfaces;
-using Core;
+using UserControlSystem.CommandsRealization;
 
 public class ChomperCommandsQueue : MonoBehaviour, ICommandsQueue
 {
@@ -11,22 +11,21 @@ public class ChomperCommandsQueue : MonoBehaviour, ICommandsQueue
     [Inject] CommandExecutorBase<IPatrolCommand> _patrolCommandExecutor;
     [Inject] CommandExecutorBase<IAttackCommand> _attackCommandExecutor;
     [Inject] CommandExecutorBase<IHoldPositionCommand> _holdPositionCommandExecutor;
-    private ReactiveCollection<ICommand> _innerCollection = new
-    ReactiveCollection<ICommand>();
+    private ReactiveCollection<ICommand> _innerCollection = new ReactiveCollection<ICommand>();
     [Inject]
     private void Init()
     {
         _innerCollection
-        .ObserveAdd().Subscribe(ONNewCommand).AddTo(this);
+        .ObserveAdd().Subscribe(OnNewCommand).AddTo(this);
     }
-    private void ONNewCommand(ICommand command, int index)
+    private void OnNewCommand(ICommand command, int index)
     {
         if (index == 0)
         {
-            ExecuteCommand(command);
+            executeCommand(command);
         }
     }
-    private async void ExecuteCommand(ICommand command)
+    private async void executeCommand(ICommand command)
     {
         await _moveCommandExecutor.TryExecuteCommand(command);
         await _patrolCommandExecutor.TryExecuteCommand(command);
@@ -42,7 +41,7 @@ public class ChomperCommandsQueue : MonoBehaviour, ICommandsQueue
     {
         if (_innerCollection.Count > 0)
         {
-            ExecuteCommand(_innerCollection[0]);
+            executeCommand(_innerCollection[0]);
         }
     }
     public void EnqueueCommand(object wrappedCommand)
@@ -53,6 +52,6 @@ public class ChomperCommandsQueue : MonoBehaviour, ICommandsQueue
     public void Clear()
     {
         _innerCollection.Clear();
-        _holdPositionCommandExecutor.ExecuteSpecificCommand(new HoldPositionCommand());
+        _holdPositionCommandExecutor.ExecuteSpecificCommand(new HoldPositionUnitCommand());
     }
 }
